@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rep al & m | Premium Interior App</title>
+    <meta name="description"
+        content="Discover exquisite furniture and interior designs. Handcrafted chairs, bed frames, and luxury dining sets for your home.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121212">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div id="install-banner" class="install-banner">
+        <span>Install **rep al & m** for a better experience</span>
+        <button id="install-button" class="btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Install
+            App</button>
+        <button id="close-banner"
+            style="background:none; border:none; color:white; margin-left:10px; cursor:pointer;">&times;</button>
+    </div>
+
+    <header id="navbar">
+        <nav class="container">
+            <div class="logo">rep al & m</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#showroom">Showroom</a></li>
+                <li><a href="#contact" class="btn-primary">Connect</a></li>
+                <li><a href="admin.html" class="admin-link"><i data-lucide="user"></i></a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i data-lucide="menu"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-overlay"></div>
+            <img src="assets/hero.png" alt="Luxury Interior Showroom" class="hero-img">
+            <div class="hero-content container">
+                <h1 class="fade-in">Crafting Elegance for <br><span>Modern Living</span></h1>
+                <p class="fade-in delay-1">Explore our curated collection of handcrafted furniture pieces designed to
+                    transform your space into a sanctuary of style.</p>
+                <div class="hero-actions fade-in delay-2">
+                    <a href="#showroom" class="btn-gold">View Collection</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="showroom" class="showroom container">
+            <div class="section-header">
+                <h2>The Collection</h2>
+                <div class="line"></div>
+                <div class="filter-tabs" id="dynamic-filters">
+                    <button class="filter-btn active" onclick="filterItems('all')">All</button>
+                    <!-- Dynamic Categories -->
+                </div>
+            </div>
+
+            <div class="grid showroom-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="chairs">
+                    <div class="product-image">
+                        <img src="assets/chair.png" alt="Designer Lounge Chair">
+                        <button class="select-btn" onclick="selectItem('Modern Lounge Chair', 'chairs')">Select
+                            Item</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Modern Lounge Chair</h3>
+                        <p>Plush velvet with dark walnut frame.</p>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-category="beds">
+                    <div class="product-image">
+                        <img src="assets/bed.png" alt="Luxury Bed Frame">
+                        <button class="select-btn" onclick="selectItem('Signature Bed Frame', 'beds')">Select
+                            Item</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Signature Bed Frame</h3>
+                        <p>Minimalist king-size upholstered wood.</p>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-category="dining">
+                    <div class="product-image">
+                        <img src="assets/dining.png" alt="Sculptural Dining Set">
+                        <button class="select-btn" onclick="selectItem('Contemporary Dining Set', 'dining')">Select
+                            Item</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Contemporary Dining Set</h3>
+                        <p>Walnut wood with ergonomic design.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-bottom">
+            <p>&copy; 2026 rep al & m Interior Co. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Selection Cart Floating Button -->
+    <div id="cart-fixed" class="cart-fixed" onclick="openSelectionModal()">
+        <i data-lucide="shopping-bag"></i>
+        <span id="cart-count">0</span>
+    </div>
+
+    <!-- Selection Modal -->
+    <div id="selection-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modal-step-1">
+                <h3>Your Selection</h3>
+                <div id="cart-items-list" class="cart-items-list">
+                    <!-- Items with thumbnails and notes show here -->
+                </div>
+                <div class="name-input-group">
+                    <label>Your Name</label>
+                    <input type="text" id="customer-name" placeholder="Enter your full name">
+                </div>
+                <div class="name-input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="customer-phone" placeholder="e.g. +234 812 345 6789">
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-gold" onclick="submitSelection()">Save Selection</button>
+                    <button id="whatsapp-btn" class="btn-wa" onclick="contactWhatsApp()" style="display:none">
+                        <i data-lucide="message-circle" style="width:16px; height:16px"></i> Contact on WhatsApp
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" id="modal-step-2" style="display: none;">
+                <i data-lucide="check-circle" class="success-icon"></i>
+                <h3>Selection Saved</h3>
+                <p>We've recorded your interest, <span id="confirmed-customer-name"></span>.</p>
+                <div class="modal-actions">
+                    <button class="btn-gold" onclick="closeModal()">Close</button>
+                    <button class="btn-wa" onclick="contactWhatsApp()">
+                        <i data-lucide="message-circle" style="width:16px; height:16px"></i> Message Admin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/config.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW Registered', reg))
+                    .catch(err => console.log('SW Error', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
