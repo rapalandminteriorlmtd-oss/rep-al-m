@@ -8,7 +8,8 @@ const ASSETS = [
     './assets/hero.png',
     './assets/chair.png',
     './assets/bed.png',
-    './assets/dining.png'
+    './assets/dining.png',
+    './assets/icon-512.png'
 ];
 
 // Install Event - Cache initial assets
